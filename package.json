@@ -1,0 +1,16 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "simple",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "kele",
+  "license": "ISC",
+  "dependencies": {
+    "log4js": "^6.1.2",
+    "mongoose": "^5.9.6",
+    "puppeteer": "^2.1.1"
+  }
+}
