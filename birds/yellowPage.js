@@ -2,31 +2,29 @@ const Nest = require('../database/Nest')
 const { mongo } = require('../config')
 const database = {
   name: "Company",
-  url: "http://b2b.huangye88.com/gongsi/company"
+  url: "http://b2b.huangye88.com/gongsi/company",
+  collection: {
+    name: String,
+    setUpTime: Date,
+    business: String,
+    address: String,
+    callNumber: Number,
+    phone: String
+  }
 }
 
 
 module.exports = {
+
   init() {
     this.initBirdNest()
   },
   async initBirdNest() {
     const bird = new Nest(mongo.url, database.name);
     await bird.connectDatabase()
-    const schema = bird.createSchema({
-      name: String,
-      age: Number
-    });
+    const schema = bird.createSchema(database.collection);
     const model = bird.createModel("huangye", schema);
-    model.create({ name: "kele", age: 28 }, (err, row) => {
-      if (err) {
-        console.log(err);
 
-      }
-      console.log(row);
-
-
-    })
 
   }
 };
