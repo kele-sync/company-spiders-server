@@ -1,0 +1,3 @@
+class YellowPage {
+  constructor() { }
+}
