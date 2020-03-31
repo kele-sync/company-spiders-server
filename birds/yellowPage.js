@@ -15,16 +15,31 @@ const database = {
 
 
 module.exports = {
-
-  init() {
-    this.initBirdNest()
+  data: {
+    model: null
+  },
+  async init() {
+    await this.initBirdNest()
   },
   async initBirdNest() {
     const bird = new Nest(mongo.url, database.name);
     await bird.connectDatabase()
     const schema = bird.createSchema(database.collection);
-    const model = bird.createModel("huangye", schema);
+    this.data.model = bird.createModel("huangye", schema);
+    console.log(this.data.model);
 
+  },
+  createCompanyInfo(collection) {
+    console.log(this.data.model);
 
-  }
+    return new Promise((resolve, reject) => {
+      this.data.model.create(collection, (err, res) => {
+        if (err) {
+          reject(err)
+        }
+        resolve(res)
+      })
+    });
+  },
+
 };
