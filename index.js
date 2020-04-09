@@ -2,13 +2,9 @@
 const logger = require('./utils/logger')
 const yellowPage = require('./birds/yellowPage')
 
-yellowPage.init()
+yellowPage.init().then(() => {
+  yellowPage.startFind()
+}).catch((err) => {
 
-yellowPage.createCompanyInfo({
-  name: 'String',
-  setUpTime: Date.now(),
-  business: 'String',
-  address: 'String',
-  callNumber: 123,
-  phone: 'String'
-})
+});
+
