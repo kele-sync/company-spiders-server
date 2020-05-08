@@ -1,14 +1,14 @@
-
 const logger = require('./utils/logger')
 const yellowPage = require('./birds/yellowPage')
+const weibo = require('./birds/weibo')
 
-yellowPage.init()
 
-yellowPage.createCompanyInfo({
-  name: 'String',
-  setUpTime: Date.now(),
-  business: 'String',
-  address: 'String',
-  callNumber: 123,
-  phone: 'String'
-})
+
+async function birdFly(params) {
+    // 黄页爬虫
+    // await yellowPage.init();
+    // await yellowPage.startFind()
+    weibo()
+}
+
+birdFly()
